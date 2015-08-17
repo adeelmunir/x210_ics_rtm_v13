@@ -1,0 +1,6 @@
+config TEST_CODE
+	tristate "TEST_CODE"
+	default y
+	help
+	compile for TEST CODE,y for kernel,m for module.
+

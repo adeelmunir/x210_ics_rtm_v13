@@ -1,0 +1,5 @@
+based on android-4.0.4_r1 from google's open source code
+patched v210_android_ics_4.0.4.patch bsp
+
+export ANDROID_JAVA_HOME=/usr/lib/jvm/java-6-sun/
+

@@ -1,0 +1,38 @@
+#!/system/busybox/bin/sh
+export PATH="/system/busybox/bin:/system/busybox/sbin:/system/busybox/usr/bin:/system/busybox/usr/sbin:/sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin"
+
+while true
+do
+
+
+
+PLUG=`ifconfig -a | grep eth0`                                                  
+echo PLUG=$PLUG        
+
+while [ -z "$PLUG" ]                                                              
+do                                                                              
+PLUG=`ifconfig -a | grep eth0`                                                  
+sleep 2                                                                         
+done 
+
+echo "start connect eth0"           
+
+ifconfig eth0 up
+sleep 3
+dhcpcd eth0
+
+PLUG=`ifconfig -a | grep eth0`
+echo PLUG=$PLUG
+
+while [ -n "$PLUG" ]
+do                
+PLUG=`ifconfig -a | grep eth0`
+sleep 2                       
+done      
+
+echo "eth0 disconnect"          
+
+
+
+
+done                              

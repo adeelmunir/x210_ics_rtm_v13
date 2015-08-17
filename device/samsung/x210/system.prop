@@ -1,0 +1,22 @@
+#
+# system.prop for x210
+#
+
+ro.ethernet.interface=eth0
+ro.ethernet.autoEnable=yes
+
+ro.kernel.android.gps=ttySAC3
+
+wifi.interface=wlan0
+wifi.supplicant_scan_interval=15
+
+# added following 5 lines
+
+rild.libargs=-d /dev/ttyUSB0
+rild.libpath=/system/lib/libreference-ril.so
+
+ro.radio.noril=yes
+ro.telephony.default_network=1
+
+
+service.adb.root=1

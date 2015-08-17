@@ -1,0 +1,75 @@
+/*
+ * Copyright (C) 2010 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.android.settings.network3g;
+
+import static android.provider.Settings.System.SCREEN_OFF_TIMEOUT;
+
+import android.app.ActivityManagerNative;
+import android.app.admin.DevicePolicyManager;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.database.ContentObserver;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.RemoteException;
+import android.os.ServiceManager;
+import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
+import android.preference.Preference;
+import android.preference.PreferenceScreen;
+import android.provider.Settings;
+import android.provider.Settings.SettingNotFoundException;
+import android.util.Log;
+import android.view.IWindowManager;
+import android.view.Surface;
+
+import java.util.ArrayList;
+import com.android.settings.SettingsPreferenceFragment;
+import android.content.Intent;
+
+
+public class Network3gSettingsFragment extends SettingsPreferenceFragment  {
+    private static final String TAG = "Network3gSettingsFragment";
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+		try {        	
+			Intent it = new Intent(Intent.ACTION_VIEW);
+			it.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+			it.setClassName("com.android.settings",
+				"com.android.settings.network3g.Network3gSettings");
+			startActivity(it);
+		}catch(Exception e){
+			e.printStackTrace();
+		}		        
+    }
+    
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+}
+
